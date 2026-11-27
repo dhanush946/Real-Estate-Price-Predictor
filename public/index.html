@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PriceWise India · Property price estimator</title>
+  <meta name="description" content="Estimate the price of a flat, house or plot in major Indian cities from its locality, size, age and amenities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f3a32'/%3E%3Cpath d='M7 17 16 9l9 8v7H7z' fill='%23e9a23b'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="masthead">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 17 16 6l12 11v10H4z" /><path d="M13 27v-7h6v7" /></svg>
+      <span>PriceWise<em>India</em></span>
+    </a>
+    <p class="model-pill" id="modelPill"><span class="dot"></span><span id="modelPillText">Loading model…</span></p>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">Property valuation · <span id="cityCount">—</span> cities</p>
+      <h1>What is this home <span class="underline">worth</span> today?</h1>
+      <p class="lede">Describe the property. The estimate, a likely price range and how it compares with the rest of the city update as you go.</p>
+    </section>
+
+    <form id="form" class="slip" novalidate>
+      <fieldset>
+        <legend><span class="num">01</span> Location</legend>
+        <div class="grid2">
+          <label>City
+            <select name="city" id="city" required></select>
+          </label>
+          <label>Locality
+            <select name="locality" id="locality" required></select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">02</span> Property</legend>
+        <div class="chips" id="propertyTypes" role="radiogroup" aria-label="Property type"></div>
+        <label class="area">Built-up area <span class="hint" id="areaHint"></span>
+          <div class="area-row">
+            <input type="range" id="areaRange" aria-label="Area slider" />
+            <div class="unit-input"><input type="number" name="area_sqft" id="area" inputmode="numeric" required /><span>sq ft</span></div>
+          </div>
+        </label>
+        <div class="grid4 rooms" id="roomFields">
+          <label>Bedrooms<input type="number" name="bedrooms" value="2" /></label>
+          <label>Bathrooms<input type="number" name="bathrooms" value="2" /></label>
+          <label>Floor no.<input type="number" name="floor_number" value="5" min="0" /></label>
+          <label>Total floors<input type="number" name="total_floors" value="14" /></label>
+        </div>
+        <div class="grid2">
+          <label>Age (years)<input type="number" name="property_age_years" value="6" /></label>
+          <label>Parking spaces<input type="number" name="parking_spaces" value="1" /></label>
+        </div>
+        <div class="chips small" id="furnishing" role="radiogroup" aria-label="Furnishing"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">03</span> Amenities</legend>
+        <div class="toggles">
+          <label class="toggle"><input type="checkbox" name="gated_community" checked /><span>Gated community</span></label>
+          <label class="toggle" id="liftToggle"><input type="checkbox" name="lift_available" checked /><span>Lift</span></label>
+          <label class="toggle"><input type="checkbox" name="gym_available" /><span>Gym</span></label>
+          <label class="toggle"><input type="checkbox" name="swimming_pool" /><span>Swimming pool</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="num">04</span> Distance to</legend>
+        <div class="sliders">
+          <label>Metro <output data-for="distance_to_metro_km"></output><input type="range" name="distance_to_metro_km" step="0.1" /></label>
+          <label>School <output data-for="distance_to_school_km"></output><input type="range" name="distance_to_school_km" step="0.1" /></label>
+          <label>Hospital <output data-for="distance_to_hospital_km"></output><input type="range" name="distance_to_hospital_km" step="0.1" /></label>
+        </div>
+      </fieldset>
+
+      <p class="form-error" id="formError" role="alert" hidden></p>
+      <button type="submit" class="cta" id="submitBtn">Estimate price <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></button>
+    </form>
+
+    <section class="result" id="result" aria-live="polite">
+      <div class="empty" id="emptyState">
+        <svg viewBox="0 0 120 90" aria-hidden="true" class="empty-art">
+          <path d="M10 80h100" /><path d="M22 80V44l22-18 22 18v36" /><path d="M66 80V54l16-12 16 12v26" />
+          <rect x="37" y="58" width="14" height="22" /><rect x="76" y="60" width="10" height="9" />
+        </svg>
+        <p>Fill in the details and press <strong>Estimate price</strong>.</p>
+      </div>
+
+      <div class="card estimate" id="estimateCard" hidden>
+        <p class="eyebrow" id="estimateFor"></p>
+        <p class="price" id="price"></p>
+        <div class="range">
+          <div class="range-bar"><span class="range-fill"></span><span class="range-mark" id="rangeMark"></span></div>
+          <div class="range-labels"><span id="low"></span><span class="mid-label">likely range</span><span id="high"></span></div>
+        </div>
+        <dl class="facts">
+          <div><dt>Per sq ft</dt><dd id="psf"></dd></div>
+          <div><dt>City median</dt><dd id="cityPsf"></dd></div>
+          <div><dt>Vs city</dt><dd id="vsCity"></dd></div>
+        </dl>
+      </div>
+
+      <div class="card" id="whatifCard" hidden>
+        <div class="card-head">
+          <h2>If the area were different</h2>
+          <p>Estimated price from 50% to 150% of the entered size. The band is the likely range.</p>
+        </div>
+        <div class="chart" id="whatif"></div>
+      </div>
+
+      <div class="card" id="cityCard" hidden>
+        <div class="card-head">
+          <h2>Typical price per sq ft by city</h2>
+          <p>Median rate across listings. Your estimate is marked.</p>
+        </div>
+        <div id="cityBars" class="bars"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <div>
+      <h3>How the estimate works</h3>
+      <p id="modelNote">—</p>
+    </div>
+    <div id="metrics" class="metrics"></div>
+    <div>
+      <h3>What moves the price most</h3>
+      <ol id="importance" class="importance"></ol>
+    </div>
+  </footer>
+
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

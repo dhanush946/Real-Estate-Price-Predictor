@@ -1,0 +1,8 @@
+[build]
+  # Retrains model/model.json from data/india_real_estate_synthetic_120k.xlsx when it exists;
+  # otherwise keeps the committed baseline model.
+  command = "npm run train"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "24"
