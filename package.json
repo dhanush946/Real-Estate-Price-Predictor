@@ -1,0 +1,19 @@
+{
+  "name": "real-estate-price-predictor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "train": "node scripts/train.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@netlify/server": "^0.1.6",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.11",
+    "typescript": "^7.0.2"
+  }
+}

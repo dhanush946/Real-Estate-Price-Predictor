@@ -1,0 +1,369 @@
+{
+  "source": "baseline",
+  "note": "Indicative baseline built from typical city/locality rates. Add the dataset and redeploy to train on real rows.",
+  "trained_at": null,
+  "trained_rows": 0,
+  "cities": [
+    "Ahmedabad",
+    "Bengaluru",
+    "Chennai",
+    "Delhi",
+    "Gurugram",
+    "Hyderabad",
+    "Kolkata",
+    "Lucknow",
+    "Mumbai",
+    "Pune"
+  ],
+  "city_localities": {
+    "Mumbai": [
+      "Andheri West",
+      "Bandra West",
+      "Borivali West",
+      "Chembur",
+      "Kharghar",
+      "Powai",
+      "Thane West"
+    ],
+    "Bengaluru": [
+      "Electronic City",
+      "HSR Layout",
+      "Hebbal",
+      "Indira Nagar",
+      "Koramangala",
+      "Sarjapur Road",
+      "Whitefield"
+    ],
+    "Delhi": [
+      "Dwarka",
+      "Greater Kailash",
+      "Mayur Vihar",
+      "Rohini",
+      "Saket",
+      "Vasant Kunj"
+    ],
+    "Gurugram": [
+      "DLF Phase 2",
+      "Golf Course Road",
+      "Sector 56",
+      "Sohna Road"
+    ],
+    "Pune": [
+      "Baner",
+      "Hinjewadi",
+      "Kharadi",
+      "Kothrud",
+      "Viman Nagar",
+      "Wakad"
+    ],
+    "Hyderabad": [
+      "Banjara Hills",
+      "Gachibowli",
+      "Kondapur",
+      "Kukatpally",
+      "Madhapur"
+    ],
+    "Chennai": [
+      "Adyar",
+      "Anna Nagar",
+      "OMR",
+      "T Nagar",
+      "Velachery"
+    ],
+    "Kolkata": [
+      "Ballygunge",
+      "Behala",
+      "New Town",
+      "Salt Lake"
+    ],
+    "Ahmedabad": [
+      "Bopal",
+      "Gota",
+      "Prahlad Nagar",
+      "Satellite"
+    ],
+    "Lucknow": [
+      "Aliganj",
+      "Gomti Nagar",
+      "Hazratganj",
+      "Indira Nagar"
+    ]
+  },
+  "city_state": {
+    "Mumbai": "Maharashtra",
+    "Bengaluru": "Karnataka",
+    "Delhi": "Delhi",
+    "Gurugram": "Haryana",
+    "Pune": "Maharashtra",
+    "Hyderabad": "Telangana",
+    "Chennai": "Tamil Nadu",
+    "Kolkata": "West Bengal",
+    "Ahmedabad": "Gujarat",
+    "Lucknow": "Uttar Pradesh"
+  },
+  "property_types": [
+    "Apartment",
+    "Builder Floor",
+    "Independent House",
+    "Penthouse",
+    "Plot",
+    "Villa"
+  ],
+  "furnishing": [
+    "Fully-Furnished",
+    "Semi-Furnished",
+    "Unfurnished"
+  ],
+  "ranges": {
+    "area_sqft": [
+      300,
+      10000
+    ],
+    "bedrooms": [
+      1,
+      6
+    ],
+    "bathrooms": [
+      1,
+      6
+    ],
+    "property_age_years": [
+      0,
+      40
+    ],
+    "total_floors": [
+      1,
+      45
+    ],
+    "parking_spaces": [
+      0,
+      4
+    ],
+    "distance_to_metro_km": [
+      0.1,
+      25
+    ],
+    "distance_to_school_km": [
+      0.1,
+      12
+    ],
+    "distance_to_hospital_km": [
+      0.1,
+      15
+    ]
+  },
+  "defaults": {
+    "distance_to_metro_km": 3.6,
+    "distance_to_school_km": 1.4,
+    "distance_to_hospital_km": 2.3
+  },
+  "coef": {
+    "intercept": 0.1619,
+    "log_area": 0.96,
+    "locality": {
+      "Mumbai|Bandra West": 10.64185,
+      "Mumbai|Andheri West": 10.18188,
+      "Mumbai|Powai": 10.0766,
+      "Mumbai|Chembur": 9.96928,
+      "Mumbai|Borivali West": 9.88532,
+      "Mumbai|Thane West": 9.56311,
+      "Mumbai|Kharghar": 9.3299,
+      "Bengaluru|Indira Nagar": 9.7847,
+      "Bengaluru|Koramangala": 9.70382,
+      "Bengaluru|HSR Layout": 9.44857,
+      "Bengaluru|Hebbal": 9.29376,
+      "Bengaluru|Whitefield": 9.09717,
+      "Bengaluru|Sarjapur Road": 9.02521,
+      "Bengaluru|Electronic City": 8.73874,
+      "Delhi|Greater Kailash": 10.25976,
+      "Delhi|Vasant Kunj": 9.97441,
+      "Delhi|Saket": 9.8899,
+      "Delhi|Mayur Vihar": 9.40426,
+      "Delhi|Dwarka": 9.37755,
+      "Delhi|Rohini": 9.2486,
+      "Gurugram|Golf Course Road": 9.86475,
+      "Gurugram|Sohna Road": 9.19726,
+      "Gurugram|DLF Phase 2": 9.65695,
+      "Gurugram|Sector 56": 9.34836,
+      "Pune|Kothrud": 9.32723,
+      "Pune|Viman Nagar": 9.26955,
+      "Pune|Baner": 9.19218,
+      "Pune|Kharadi": 9.13884,
+      "Pune|Wakad": 8.97841,
+      "Pune|Hinjewadi": 8.91059,
+      "Hyderabad|Banjara Hills": 9.60373,
+      "Hyderabad|Madhapur": 9.23308,
+      "Hyderabad|Gachibowli": 9.17056,
+      "Hyderabad|Kondapur": 9.07337,
+      "Hyderabad|Kukatpally": 8.87207,
+      "Chennai|T Nagar": 9.68595,
+      "Chennai|Adyar": 9.63168,
+      "Chennai|Anna Nagar": 9.53748,
+      "Chennai|Velachery": 9.06416,
+      "Chennai|OMR": 8.82615,
+      "Kolkata|Ballygunge": 9.5045,
+      "Kolkata|Salt Lake": 9.09493,
+      "Kolkata|New Town": 8.72095,
+      "Kolkata|Behala": 8.56408,
+      "Ahmedabad|Prahlad Nagar": 8.96699,
+      "Ahmedabad|Satellite": 8.88599,
+      "Ahmedabad|Bopal": 8.53895,
+      "Ahmedabad|Gota": 8.43815,
+      "Lucknow|Gomti Nagar": 8.90382,
+      "Lucknow|Hazratganj": 9.09605,
+      "Lucknow|Indira Nagar": 8.72258,
+      "Lucknow|Aliganj": 8.60886
+    },
+    "city_fallback": {
+      "Mumbai": 9.96928,
+      "Bengaluru": 9.29376,
+      "Delhi": 9.67627,
+      "Gurugram": 9.51451,
+      "Pune": 9.16587,
+      "Hyderabad": 9.17056,
+      "Chennai": 9.53748,
+      "Kolkata": 8.92532,
+      "Ahmedabad": 8.72745,
+      "Lucknow": 8.8173
+    },
+    "property_type": {
+      "Apartment": 0,
+      "Builder Floor": -0.045,
+      "Independent House": 0.055,
+      "Penthouse": 0.21,
+      "Plot": -0.11,
+      "Villa": 0.13
+    },
+    "furnishing": {
+      "Unfurnished": 0,
+      "Semi-Furnished": 0.038,
+      "Fully-Furnished": 0.087
+    },
+    "binary": {
+      "gated_community": 0.052,
+      "lift_available": 0.021,
+      "gym_available": 0.026,
+      "swimming_pool": 0.041
+    },
+    "numeric": {
+      "bedrooms": 0.031,
+      "bathrooms": 0.019,
+      "property_age_years": -0.0088,
+      "floor_number": 0.0021,
+      "total_floors": 0.0009,
+      "parking_spaces": 0.028,
+      "distance_to_metro_km": -0.0118,
+      "distance_to_school_km": -0.0061,
+      "distance_to_hospital_km": -0.0047
+    }
+  },
+  "residual_quantiles": {
+    "low": -0.165,
+    "high": 0.158
+  },
+  "metrics": null,
+  "feature_importance": [
+    {
+      "feature": "locality",
+      "importance": 0.412
+    },
+    {
+      "feature": "area_sqft",
+      "importance": 0.336
+    },
+    {
+      "feature": "property_type",
+      "importance": 0.071
+    },
+    {
+      "feature": "property_age_years",
+      "importance": 0.047
+    },
+    {
+      "feature": "distance_to_metro_km",
+      "importance": 0.034
+    },
+    {
+      "feature": "furnishing",
+      "importance": 0.027
+    },
+    {
+      "feature": "bedrooms",
+      "importance": 0.021
+    },
+    {
+      "feature": "swimming_pool",
+      "importance": 0.014
+    },
+    {
+      "feature": "gated_community",
+      "importance": 0.013
+    },
+    {
+      "feature": "parking_spaces",
+      "importance": 0.011
+    }
+  ],
+  "city_stats": [
+    {
+      "city": "Mumbai",
+      "median_price": 24564000,
+      "median_psf": 21360,
+      "listings": null
+    },
+    {
+      "city": "Bengaluru",
+      "median_price": 12500500,
+      "median_psf": 10870,
+      "listings": null
+    },
+    {
+      "city": "Delhi",
+      "median_price": 18325250,
+      "median_psf": 15935,
+      "listings": null
+    },
+    {
+      "city": "Gurugram",
+      "median_price": 15588250,
+      "median_psf": 13555,
+      "listings": null
+    },
+    {
+      "city": "Pune",
+      "median_price": 10999750,
+      "median_psf": 9565,
+      "listings": null
+    },
+    {
+      "city": "Hyderabad",
+      "median_price": 11051500,
+      "median_psf": 9610,
+      "listings": null
+    },
+    {
+      "city": "Chennai",
+      "median_price": 15950500,
+      "median_psf": 13870,
+      "listings": null
+    },
+    {
+      "city": "Kolkata",
+      "median_price": 8648000,
+      "median_psf": 7520,
+      "listings": null
+    },
+    {
+      "city": "Ahmedabad",
+      "median_price": 7095500,
+      "median_psf": 6170,
+      "listings": null
+    },
+    {
+      "city": "Lucknow",
+      "median_price": 7762500,
+      "median_psf": 6750,
+      "listings": null
+    }
+  ]
+}
